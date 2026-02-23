@@ -1,0 +1,136 @@
+type http_request_result = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type http_header = 
+ record {
+   name: text;
+   value: text;
+ };
+type Web3CardTranslation = 
+ record {
+   de: Web3Card;
+   en: Web3Card;
+   pl: Web3Card;
+ };
+type Web3Card = 
+ record {
+   buttonTitle: text;
+   description: text;
+   id: text;
+   imagePath: text;
+   link: text;
+   title: text;
+ };
+type UserRole = 
+ variant {
+   admin;
+   guest;
+   user;
+ };
+type UserProfile = record {name: text;};
+type Translation = 
+ record {
+   de: text;
+   en: text;
+   pl: text;
+ };
+type TransformationOutput = 
+ record {
+   body: blob;
+   headers: vec http_header;
+   status: nat;
+ };
+type TransformationInput = 
+ record {
+   context: blob;
+   response: http_request_result;
+ };
+type StripeSessionStatus = 
+ variant {
+   completed: record {
+                response: text;
+                userPrincipal: opt text;
+              };
+   failed: record {error: text;};
+ };
+type StripeConfiguration = 
+ record {
+   allowedCountries: vec text;
+   secretKey: text;
+ };
+type ShoppingItem = 
+ record {
+   currency: text;
+   priceInCents: nat;
+   productDescription: text;
+   productName: text;
+   quantity: nat;
+ };
+type RodoContent = 
+ record {
+   de: text;
+   en: text;
+   pl: text;
+ };
+type Product = record {id: text;};
+type FileReference = 
+ record {
+   hash: text;
+   path: text;
+ };
+type ContactMessage = 
+ record {
+   email: text;
+   firstName: text;
+   lastName: text;
+   message: text;
+   phone: opt text;
+   timestamp: int;
+ };
+service : {
+  addProduct: (product: Product) -> ();
+  addRodoContent: (key: text, content: RodoContent) -> ();
+  addTranslation: (key: text, translation: Translation) -> ();
+  addWeb3Card: (card: Web3Card) -> ();
+  assignCallerUserRole: (user: principal, role: UserRole) -> ();
+  createCheckoutSession: (items: vec ShoppingItem, successUrl: text,
+   cancelUrl: text) -> (text);
+  deleteContactMessage: (messageId: text) -> ();
+  deleteProduct: (productId: text) -> ();
+  deleteRodoContent: (key: text) -> ();
+  deleteTranslation: (key: text) -> ();
+  deleteWeb3Card: (cardId: text) -> ();
+  dropFileReference: (path: text) -> ();
+  getAllRodoContents: () -> (vec RodoContent) query;
+  getAllTranslations: () -> (vec Translation) query;
+  getCallerPrincipalAndAdminStatus: () -> (principal, bool) query;
+  getCallerUserProfile: () -> (opt UserProfile) query;
+  getCallerUserRole: () -> (UserRole) query;
+  getContactMessages: () -> (vec ContactMessage) query;
+  getFileReference: (path: text) -> (FileReference) query;
+  getProducts: () -> (vec Product) query;
+  getRodoContent: (key: text) -> (opt RodoContent) query;
+  getStripeSessionStatus: (sessionId: text) -> (StripeSessionStatus);
+  getTranslation: (key: text) -> (opt Translation) query;
+  getUserProfile: (user: principal) -> (opt UserProfile) query;
+  getWeb3CardTranslationPreview: (card: Web3Card) ->
+   (Web3CardTranslation) query;
+  getWeb3Cards: () -> (vec Web3Card) query;
+  initializeAccessControl: () -> ();
+  isCallerAdmin: () -> (bool) query;
+  isStripeConfigured: () -> (bool) query;
+  listFileReferences: () -> (vec FileReference) query;
+  registerFileReference: (path: text, hash: text) -> ();
+  saveCallerUserProfile: (profile: UserProfile) -> ();
+  setStripeConfiguration: (config: StripeConfiguration) -> ();
+  submitContactMessage: (firstName: text, lastName: text, email: text, phone:
+   opt text, message: text) -> (bool);
+  transform: (input: TransformationInput) -> (TransformationOutput) query;
+  updateProduct: (product: Product) -> ();
+  updateRodoContent: (key: text, content: RodoContent) -> ();
+  updateTranslation: (key: text, translation: Translation) -> ();
+  updateWeb3Card: (card: Web3Card) -> ();
+}

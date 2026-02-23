@@ -1,0 +1,40 @@
+{
+  "kind": "build_request",
+  "title": "Update footer copyright text with heart emoji",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Update the footer copyright text to display '© 2025. With ❤ by FoxP2' (translated as: '© 2025. Z ❤ przez FoxP2' in Polish, '© 2025. With ❤ by FoxP2' in English, '© 2025. Mit ❤ von FoxP2' in German). Replace any existing copyright or credit text in the Footer component.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-final"
+        ],
+        "quotes": [
+          "Zmień stopkę strony na \"© 2025. Z \"+emotikon serca+\" przez FoxP2\""
+        ]
+      },
+      "acceptanceCriteria": [
+        "Footer displays '© 2025. Z ❤ przez FoxP2' when Polish language is selected",
+        "Footer displays '© 2025. With ❤ by FoxP2' when English language is selected",
+        "Footer displays '© 2025. Mit ❤ von FoxP2' when German language is selected",
+        "The heart emoji (❤) is rendered correctly in all languages",
+        "Copyright text is properly styled and positioned within the footer"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify the existing footer structure beyond the copyright text update",
+    "Maintain all existing footer functionality including logo, contact information, services list, and RODO button"
+  ],
+  "nonGoals": [
+    "Changing footer layout or styling",
+    "Modifying other footer content sections",
+    "Adding new footer components"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

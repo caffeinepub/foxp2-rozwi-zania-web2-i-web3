@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-update-the-footer-copyright-text-to-display-2025-with-by-foxp2-translated-as-2025-z-przez-foxp2-in-polish-2025-with-by-foxp2-in-english-2025-mit-von-foxp2-in-german-replace-any-existing-copyright-or-credit-text-in-the-footer-component",
+      "title": "Update the footer copyright text to display '© 2025. With ❤ by FoxP2' (translated as: '© 2025. Z ❤ przez FoxP2' in Polish, '© 2025. With ❤ by FoxP2' in English, '© 2025. Mit ❤ von FoxP2' in German). Replace any existing copyright or credit text in the Footer component.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Change footer to '© 2025. Z ❤ przez FoxP2'",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Update footer copyright text with heart emoji",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

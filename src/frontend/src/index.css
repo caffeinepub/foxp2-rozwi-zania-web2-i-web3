@@ -1,0 +1,168 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.625rem;
+        --background: 0.98 0 0;
+        --foreground: 0.2 0 0;
+        --card: 1 0 0;
+        --card-foreground: 0.2 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.2 0 0;
+        --primary: 0.65 0.15 35;
+        --primary-foreground: 0.98 0 0;
+        --secondary: 0.9 0 0;
+        --secondary-foreground: 0.3 0 0;
+        --muted: 0.95 0 0;
+        --muted-foreground: 0.5 0 0;
+        --accent: 0.65 0.15 35;
+        --accent-foreground: 0.98 0 0;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.985 0 0;
+        --border: 0.85 0 0;
+        --input: 0.9 0 0;
+        --ring: 0.65 0.15 35;
+        --chart-1: 0.65 0.15 35;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.398 0.07 227.392;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+        --sidebar: 0.985 0 0;
+        --sidebar-foreground: 0.2 0 0;
+        --sidebar-primary: 0.65 0.15 35;
+        --sidebar-primary-foreground: 0.985 0 0;
+        --sidebar-accent: 0.95 0 0;
+        --sidebar-accent-foreground: 0.3 0 0;
+        --sidebar-border: 0.85 0 0;
+        --sidebar-ring: 0.65 0.15 35;
+        --web2-color: 0.6 0.2 240;
+        --web3-color: 0.6 0.2 140;
+    }
+
+    .dark {
+        --background: 0.15 0 0;
+        --foreground: 0.95 0 0;
+        --card: 0.2 0 0;
+        --card-foreground: 0.95 0 0;
+        --popover: 0.25 0 0;
+        --popover-foreground: 0.95 0 0;
+        --primary: 0.7 0.18 35;
+        --primary-foreground: 0.15 0 0;
+        --secondary: 0.3 0 0;
+        --secondary-foreground: 0.9 0 0;
+        --muted: 0.25 0 0;
+        --muted-foreground: 0.6 0 0;
+        --accent: 0.7 0.18 35;
+        --accent-foreground: 0.15 0 0;
+        --destructive: 0.704 0.191 22.216;
+        --destructive-foreground: 0.95 0 0;
+        --border: 0.4 0 0;
+        --input: 0.3 0 0;
+        --ring: 0.7 0.18 35;
+        --chart-1: 0.7 0.18 35;
+        --chart-2: 0.696 0.17 162.48;
+        --chart-3: 0.769 0.188 70.08;
+        --chart-4: 0.627 0.265 303.9;
+        --chart-5: 0.645 0.246 16.439;
+        --sidebar: 0.2 0 0;
+        --sidebar-foreground: 0.95 0 0;
+        --sidebar-primary: 0.7 0.18 35;
+        --sidebar-primary-foreground: 0.95 0 0;
+        --sidebar-accent: 0.25 0 0;
+        --sidebar-accent-foreground: 0.9 0 0;
+        --sidebar-border: 0.4 0 0;
+        --sidebar-ring: 0.7 0.18 35;
+        --web2-color: 0.7 0.25 240;
+        --web3-color: 0.7 0.25 140;
+    }
+
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@layer utilities {
+    .text-web2 {
+        color: oklch(var(--web2-color));
+        text-shadow: 
+            0 0 8px rgba(128, 128, 128, 0.3),
+            0 0 16px rgba(128, 128, 128, 0.2),
+            0 0 24px rgba(128, 128, 128, 0.1);
+    }
+    
+    .text-web3 {
+        color: oklch(var(--web3-color));
+        text-shadow: 
+            0 0 8px rgba(128, 128, 128, 0.3),
+            0 0 16px rgba(128, 128, 128, 0.2),
+            0 0 24px rgba(128, 128, 128, 0.1);
+    }
+
+    .dark .text-web2 {
+        text-shadow: 
+            0 0 8px rgba(160, 160, 160, 0.4),
+            0 0 16px rgba(160, 160, 160, 0.25),
+            0 0 24px rgba(160, 160, 160, 0.15);
+    }
+    
+    .dark .text-web3 {
+        text-shadow: 
+            0 0 8px rgba(160, 160, 160, 0.4),
+            0 0 16px rgba(160, 160, 160, 0.25),
+            0 0 24px rgba(160, 160, 160, 0.15);
+    }
+
+    .kaska-styled {
+        color: oklch(var(--primary));
+        font-weight: 600;
+    }
+
+    .kaska-orange {
+        color: oklch(var(--primary));
+        font-weight: 700;
+    }
+
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+        20%, 40%, 60%, 80% { transform: translateX(2px); }
+    }
+
+    .shake-on-hover:hover {
+        animation: shake 0.6s ease-in-out;
+    }
+
+    /* Animated slogan animations */
+    @keyframes sloganFadeOut {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    @keyframes sloganShow {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes sloganShake {
+        0%, 100% { transform: translateX(0) translateY(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-3px) translateY(-1px); }
+        20%, 40%, 60%, 80% { transform: translateX(3px) translateY(1px); }
+    }
+
+    .animated-slogan-fade-out {
+        animation: sloganFadeOut 1s ease-in-out forwards;
+    }
+
+    .animated-slogan-show {
+        animation: sloganShow 0.5s ease-in-out forwards;
+    }
+
+    .animated-slogan-shake {
+        animation: sloganShake 3s ease-in-out;
+    }
+}

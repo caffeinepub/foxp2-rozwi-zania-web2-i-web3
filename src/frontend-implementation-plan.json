@@ -1,0 +1,30 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Update footer copyright text with heart emoji",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Update footer copyright text to display '© 2025. With ❤ by FoxP2' with proper translations for Polish, English, and German languages",
+      "acceptanceCriteria": [
+        "Footer displays '© 2025. Z ❤ przez FoxP2' when Polish language is selected",
+        "Footer displays '© 2025. With ❤ by FoxP2' when English language is selected",
+        "Footer displays '© 2025. Mit ❤ von FoxP2' when German language is selected",
+        "The heart emoji (❤) is rendered correctly in all languages",
+        "Copyright text is properly styled and positioned within the footer"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/contexts/LanguageContext.tsx",
+          "operation": "modify",
+          "description": "Add translation keys for the new copyright text in the translations object. Add 'copyrightText' key with values: pl: '© 2025. Z ❤ przez FoxP2', en: '© 2025. With ❤ by FoxP2', de: '© 2025. Mit ❤ von FoxP2'. Ensure the heart emoji is included in each translation string."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace the existing copyright or credit text in the Footer component with the new translated copyright text. Use the t('copyrightText') function from the LanguageContext to display the language-specific copyright text. Maintain all existing footer structure including logo, contact information, services list, RODO button, and principal ID display. Ensure the copyright text is properly positioned within the footer layout."
+        }
+      ]
+    }
+  ]
+}
